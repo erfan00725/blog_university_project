@@ -1,16 +1,15 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import Header from "./components/Header";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
-    <>
-    <div className="flex items-center justify-center h-screen bg-gray-100">
-      <h1 className="text-4xl font-bold text-blue-500">Hello, World!</h1>
+    <div className="">
+      <Header />
     </div>
-    </>
-  )
+  );
 }
 
-export default App
+export default App;
