@@ -9,3 +9,27 @@
 .menu_items .menu_items_icons {
   @apply w-auto mx-2;
 }
+
+.post-detail {
+  @apply text-main-color font-light text-xs cursor-default mb-3;
+}
+
+.post-title {
+  @apply font-semibold text-3xl mb-2;
+}
+
+.post-description {
+  @apply text-base font-normal;
+}
+
+.post-prev-text {
+  @apply flex flex-col w-full justify-start items-center transition-all duration-100 hover:text-secondery-color;
+}
+
+.btn {
+  @apply w-36 leading-[47px] bg-secondery-color text-alt-color hover:bg-main-color transition-all duration-300;
+}
+
+.input {
+  @apply w-64 leading-[47px] border-b border-main-color hover:border-secondery-color px-1;
+}

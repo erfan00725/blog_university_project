@@ -35,7 +35,7 @@ const Header = () => {
           <input
             type="search"
             placeholder="Search..."
-            className="w-full h-8 border-b focus-visible:border-main-color hover:border-main-color"
+            className="w-full h-8 border-b focus-visible:border-main-color hover:border-main-color px-1"
           />
           <FontAwesomeIcon
             className="absolute right-4"

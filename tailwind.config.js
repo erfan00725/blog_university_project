@@ -9,7 +9,9 @@ export default {
       colors: {
         "main-color": "#000000",
         "secondery-color": "#6600ea",
+        "alt-color": "#ffffff",
         "border-secondery-color": "#d3d3d3",
+        "input-label": "#767676",
       },
       width: {
         980: "980px",
