@@ -1,7 +1,8 @@
 import { useState } from "react";
 import "./App.css";
-import Header from "./components/Header";
-import Body from "./components/Body";
+import Header from "./components/Header/Header";
+import Body from "./components/Body/Body";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -10,7 +11,7 @@ function App() {
     <div className="flex flex-col w-full justify-center items-center">
       <Header />
       <Body />
-      <div></div>
+      <Footer />
     </div>
   );
 }

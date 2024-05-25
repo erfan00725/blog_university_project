@@ -43,16 +43,16 @@ const Header = () => {
           />
         </li>
         <li className="menu_items">
-          <a className="menu_items_icons" href="">
+          <a className="social_icons" href="">
             <FontAwesomeIcon icon={faXTwitter} />
           </a>
-          <a className="menu_items_icons" href="">
+          <a className="social_icons" href="">
             <FontAwesomeIcon icon={faTelegram} />
           </a>
-          <a className="menu_items_icons" href="">
+          <a className="social_icons" href="">
             <FontAwesomeIcon icon={faFacebook} />
           </a>
-          <a className="menu_items_icons" href="">
+          <a className="social_icons" href="">
             <FontAwesomeIcon icon={faInstagram} />
           </a>
         </li>

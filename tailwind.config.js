@@ -16,6 +16,9 @@ export default {
       width: {
         980: "980px",
       },
+      flex: {
+        2: "2 2 0%",
+      },
     },
   },
   plugins: [],
