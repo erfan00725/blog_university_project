@@ -1,5 +1,5 @@
 import React from "react";
-import PostPrev from "../PostPrev";
+import PostPrev from "../common/PostPrev";
 
 const MainLeft = () => {
   return (

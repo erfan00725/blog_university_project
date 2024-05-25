@@ -1,6 +1,6 @@
 import React from "react";
 import longArrow from "../../assets/noun-arrow-long-top-4411420.svg";
-import Input from "../Input";
+import Input from "../common/Input";
 
 const Footer = () => {
   return (

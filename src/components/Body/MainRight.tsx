@@ -1,6 +1,6 @@
 import React from "react";
 import userIMG from "../../assets/User.webp";
-import SocialPostPrev from "../SocialPostPrev";
+import SocialPostPrev from "../common/SocialPostPrev";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
@@ -8,7 +8,7 @@ import {
   faTelegram,
   faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import Input from "../Input";
+import Input from "../common/Input";
 import img from "../../assets/books new smaller.webp";
 
 const MainRight = () => {

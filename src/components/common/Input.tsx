@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { InputProps } from "./propsTypes";
+import { InputProps } from "../../types/propsTypes";
 
 const Input = ({
   className,
