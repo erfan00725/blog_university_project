@@ -1,6 +1,6 @@
 import React from "react";
 import featuredIMG from "../../assets/images/FEATURED-POST.webp";
-import PostReadInfo from "../common/PostReadInfo";
+import PostReadInfo from "../Post/PostReadInfo";
 
 const FeaturedPost = () => {
   return (

@@ -5,3 +5,7 @@ export type InputProps = {
   type?: string;
   required?: boolean;
 };
+
+export type PostPrevProps = {
+  isBig?: boolean;
+}
