@@ -10,7 +10,7 @@ import React from "react";
 
 const Header = () => {
   return (
-    <div className="flex flex-col justify-center items-center w-full text-main-color">
+    <div className="flex flex-col justify-center items-center w-full text-main-color mb-16">
       <div className="flex flex-col justify-center items-center mt-12 mb-12 pl-5 pr-5">
         <span className="text-2xl mb-3 text-center w-full tracking-[0.2em] font-extralight">
           EVERYTHING IS PERSONAL. INCLUDING THIS BLOG.
@@ -23,13 +23,13 @@ const Header = () => {
           <a href="">Home</a>
         </li>
         <li className="menu_items">
-          <a href="">Home</a>
+          <a href="">About</a>
         </li>
         <li className="menu_items">
-          <a href="">Home</a>
+          <a href="">My Blog</a>
         </li>
         <li className="menu_items">
-          <a href="">Home</a>
+          <a href="">Content</a>
         </li>
         <li className="menu_items pl-2 pr-2 relative">
           <input

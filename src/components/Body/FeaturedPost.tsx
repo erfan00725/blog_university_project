@@ -1,10 +1,10 @@
 import React from "react";
-import featuredIMG from "../../assets/FEATURED-POST.webp";
+import featuredIMG from "../../assets/images/FEATURED-POST.webp";
 import PostReadInfo from "../common/PostReadInfo";
 
 const FeaturedPost = () => {
   return (
-    <div className="flex flex-col items-start justify-center w-[940px] border border-main-color mt-28 mb-20 relative">
+    <div className="flex flex-col items-start justify-center w-[940px] border border-main-color mb-20 relative">
       <div className="border bg-alt-color border-main-color absolute top-[-32px] left-[-1px] w-96 section-title py-0">
         <span>FEATURED POST</span>
       </div>

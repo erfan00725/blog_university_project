@@ -1,5 +1,5 @@
 import React from "react";
-import img from "../assets/post1.webp";
+import img from "../../assets/images/post1.webp";
 import PostReadInfo from "./PostReadInfo";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,7 +16,7 @@ const PostPrev = () => {
           <h3 className="post-title">
             Do Not Leave Tokyo Before Eating This Ramen
           </h3>
-          <p className="post-description">
+          <p className="post-prev-description">
             Create a blog post subtitle that summarizes your post in a few
             short, punchy sentences and entices your audience to con...
           </p>

@@ -19,7 +19,11 @@
 }
 
 .post-description {
-  @apply text-sm  font-normal flex-1;
+  @apply text-lg  font-light flex-1 whitespace-pre text-wrap;
+}
+
+.post-prev-description {
+  @apply text-sm  font-normal flex-1 whitespace-pre text-wrap;
 }
 
 .post-prev-text {
