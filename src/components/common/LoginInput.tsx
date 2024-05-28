@@ -10,7 +10,7 @@ const LoginInput = ({
   icon,
 }: LoginInputProps) => {
   return (
-    <div className="w-60 h-12 mb-5 px-4 border border-indigo-400 flex flex-row items-center rounded-xl text-indigo-400">
+    <div className="w-60 h-12 mb-5 px-4 border border-secondery-color flex flex-row items-center rounded-xl text-indigo-400">
       {icon || <FontAwesomeIcon icon={faUser} />}
       <input
         type={type || "text"}
