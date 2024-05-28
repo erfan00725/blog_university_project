@@ -2,7 +2,7 @@ import React from "react";
 import FeaturedPost from "./FeaturedPost";
 import Reminder from "./Reminder";
 import MainLeft from "./MainLeft";
-import MainRight from "./MainRight";
+import MainRight from "./MainRight/MainRight";
 
 const Body = () => {
   return (

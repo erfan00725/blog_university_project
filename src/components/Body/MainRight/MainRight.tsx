@@ -1,6 +1,6 @@
 import React from "react";
-import userIMG from "../../assets/images/User.webp";
-import SocialPostPrev from "../common/SocialPostPrev";
+import userIMG from "../../../assets/images/User.webp";
+import SocialPostPrev from "./SocialPostPrev";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
@@ -8,8 +8,8 @@ import {
   faTelegram,
   faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import Input from "../common/Input";
-import img from "../../assets/images/books new smaller.webp";
+import Input from "../../common/Input";
+import img from "../../../assets/images/books new smaller.webp";
 
 const MainRight = () => {
   return (
@@ -56,7 +56,12 @@ const MainRight = () => {
       </div>
       <div className="main-right-sections flex-col pb-12">
         <h3 className="section-title">SUBSCRIBE</h3>
-        <Input className="w-full" placeholder="test@gmail.com" required />
+        <Input
+          className="w-full"
+          title="Enter your email"
+          placeholder="test@gmail.com"
+          required
+        />
         <button className="btn w-full my-5 ">Subscribe</button>
       </div>
       <div className="main-right-sections flex-col !border-0">

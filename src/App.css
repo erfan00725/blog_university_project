@@ -35,7 +35,7 @@
 }
 
 .input {
-  @apply w-full min-w-64 leading-[47px] border-b border-main-color hover:border-secondery-color px-1;
+  @apply w-full min-w-64 leading-[47px] px-1;
 }
 
 .section-title {
@@ -64,4 +64,7 @@ body .main-right-sections {
 
 .btnIcon {
   @apply text-main-color hover:text-secondery-color transition-colors duration-150;
+}
+* {
+  scroll-behavior: smooth;
 }

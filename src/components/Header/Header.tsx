@@ -7,29 +7,71 @@ import {
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { HeaderProps } from "../../types/propsTypes";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   return (
     <div className="flex flex-col justify-center items-center w-full text-main-color mb-16">
       <div className="flex flex-col justify-center items-center mt-12 mb-12 pl-5 pr-5">
         <span className="text-2xl mb-3 text-center w-full tracking-[0.2em] font-extralight">
           EVERYTHING IS PERSONAL. INCLUDING THIS BLOG.
         </span>
-        <h1 className="font-bold text-8xl w-full">Train of Thought</h1>
+        <Link to={"/"}>
+          <h1 className="font-bold text-8xl w-full">Train of Thought</h1>
+        </Link>
       </div>
 
       <ul className="flex flex-row justify-center items-center border-t border-b border-main-color w-full h-[50px]">
         <li className="menu_items">
-          <a href="">Home</a>
+          <NavLink
+            className={({ isActive, isPending }) =>
+              isPending
+                ? "text-main-color"
+                : isActive
+                  ? "text-secondery-color"
+                  : ""
+            }
+            to={"/"}
+          >
+            Home
+          </NavLink>
         </li>
         <li className="menu_items">
-          <a href="">About</a>
+          <NavLink
+            className={({ isActive, isPending }) =>
+              isPending
+                ? "text-main-color"
+                : isActive
+                  ? "text-secondery-color"
+                  : ""
+            }
+            to={"/about"}
+          >
+            About
+          </NavLink>
         </li>
         <li className="menu_items">
-          <a href="">My Blog</a>
+          <NavLink
+            className={({ isActive, isPending }) =>
+              isPending
+                ? "text-main-color"
+                : isActive
+                  ? "text-secondery-color"
+                  : ""
+            }
+            to={"/posts"}
+          >
+            My Blog
+          </NavLink>
         </li>
-        <li className="menu_items">
-          <a href="">Content</a>
+        <li className="menu_items border-l-0 cursor-pointer">
+          <a href="#contactForm" className="w-full h-full">
+            Contant
+          </a>
         </li>
         <li className="menu_items pl-2 pr-2 relative">
           <input
@@ -43,16 +85,16 @@ const Header = () => {
           />
         </li>
         <li className="menu_items">
-          <a className="social_icons" href="">
+          <a className="social_icons btnIcon" href="">
             <FontAwesomeIcon icon={faXTwitter} />
           </a>
-          <a className="social_icons" href="">
+          <a className="social_icons btnIcon" href="">
             <FontAwesomeIcon icon={faTelegram} />
           </a>
-          <a className="social_icons" href="">
+          <a className="social_icons btnIcon" href="">
             <FontAwesomeIcon icon={faFacebook} />
           </a>
-          <a className="social_icons" href="">
+          <a className="social_icons btnIcon" href="">
             <FontAwesomeIcon icon={faInstagram} />
           </a>
         </li>

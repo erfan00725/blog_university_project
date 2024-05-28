@@ -1,6 +1,7 @@
 import React from "react";
 import featuredIMG from "../../assets/images/FEATURED-POST.webp";
 import PostReadInfo from "../Post/PostReadInfo";
+import { Link } from "react-router-dom";
 
 const FeaturedPost = () => {
   return (
@@ -10,17 +11,17 @@ const FeaturedPost = () => {
       </div>
       <div>
         {" "}
-        <a href="">
+        <Link to="/posts/1">
           <img
             src={featuredIMG}
             alt="Back to Fiction: What I'm Reading This Summer"
           />
-        </a>
+        </Link>
       </div>
       <div className="flex flex-col justify-center items-center px-8 py-7">
         <PostReadInfo />
         <div className="post-prev-text">
-          <a href="">
+          <Link to="/posts/1">
             <h3 className="post-title">
               Back to Fiction: What I'm Reading This Summer
             </h3>
@@ -29,7 +30,7 @@ const FeaturedPost = () => {
               short, punchy sentences and entices your audience to continue
               reading....
             </p>
-          </a>
+          </Link>
         </div>
       </div>
     </div>
