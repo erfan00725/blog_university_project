@@ -61,3 +61,7 @@ body .main-right-sections {
 .header1 {
   @apply font-bold text-main-color text-4xl;
 }
+
+.btnIcon {
+  @apply text-main-color hover:text-secondery-color transition-colors duration-150;
+}
