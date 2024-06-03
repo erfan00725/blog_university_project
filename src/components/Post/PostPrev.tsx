@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import img from "../../assets/images/c22c23_e3b5cb121db549fdbb1590f51d378b8c~mv2.png";
 import PostReadInfo from "./PostReadInfo";
 import {
   faEllipsisVertical,
@@ -11,8 +10,16 @@ import { PostPrevProps } from "../../types/propsTypes";
 import classNames from "classnames";
 import PostReadInfoShare from "./PostReadInfoShare";
 import { Link } from "react-router-dom";
+import { postType } from "../../types/fetchResponseTypes";
 
-const PostPrev = ({ isBig = false }: PostPrevProps) => {
+const PostPrev = ({
+  isBig = false,
+  id,
+  description,
+  title,
+  image_path: img,
+  likes = 0,
+}: PostPrevProps & postType) => {
   return (
     <div
       className={classNames("main-border flex flex-row mb-8", {
@@ -40,13 +47,8 @@ const PostPrev = ({ isBig = false }: PostPrevProps) => {
           to="/posts/1"
           className={classNames("post-prev-text", { "pb-10": isBig })}
         >
-          <h3 className="post-title">
-            Do Not Leave Tokyo Before Eating This Ramen
-          </h3>
-          <p className="post-prev-description">
-            Create a blog post subtitle that summarizes your post in a few
-            short, punchy sentences and entices your audience to con...
-          </p>
+          <h3 className="post-title">{title}</h3>
+          <p className="post-prev-description">{description}</p>
         </Link>
         <div
           className={classNames(
@@ -59,7 +61,7 @@ const PostPrev = ({ isBig = false }: PostPrevProps) => {
             <span className="ml-3">0 comments</span>
           </div>
           <div className="flex flex-row items-center">
-            <span className="font-light text-sm mr-1">12 </span>
+            <span className="font-light text-sm mr-1">{likes} </span>
             <FontAwesomeIcon color="red" icon={faHeart} />
           </div>
         </div>

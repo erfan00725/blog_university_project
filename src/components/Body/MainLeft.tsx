@@ -1,6 +1,7 @@
 import React from "react";
 import PostPrev from "../Post/PostPrev";
 import PostPrevList from "../Post/PostPrevList";
+import { Link } from "react-router-dom";
 
 const MainLeft = () => {
   return (
@@ -9,7 +10,9 @@ const MainLeft = () => {
         <h3 className="section-title">TRAIN OF THOUGHT</h3>
         <PostPrevList />
       </div>
-      <button className="btn w-40 mt-12 leading-9">More Posts</button>
+      <Link to={"/posts"} className="btn w-40 mt-12 leading-9 text-center">
+        More Posts
+      </Link>
     </div>
   );
 };
