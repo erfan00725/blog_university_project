@@ -16,6 +16,6 @@ Route::put('post/{post}/like', [PostController::class, 'likeIncreament'])->name(
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::post('/check', [AuthController::class, 'check']);
+    Route::get('/check', [AuthController::class, 'check']);
     Route::get('/logout', [AuthController::class, 'logout/']);
 });

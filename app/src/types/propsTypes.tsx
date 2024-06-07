@@ -10,6 +10,8 @@ export type InputProps = {
 
 export type PostPrevProps = {
   isBig?: boolean;
+  page?: number;
+  perPage?: number;
 };
 
 export type FooterProps = {

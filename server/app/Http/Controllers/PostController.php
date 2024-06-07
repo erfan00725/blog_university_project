@@ -27,9 +27,13 @@ class PostController extends Controller implements HasMiddleware
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return PostResource::collection(Post::paginate(12));
+        if ($request->has('perPage')) {
+            return PostResource::collection(Post::paginate($request->input("perPage")));
+        }else{
+            return PostResource::collection(Post::paginate(10));
+        }
     }
 
     /**
@@ -92,7 +96,7 @@ class PostController extends Controller implements HasMiddleware
         $post->update($filteredData);
 
         if ($request->hasFile('image')) {
-            if ( Storage::disk('public')->exists("images/gcv8Q5yw30VOWkimbYm67y1uSzym3p30qtOdtiyJ.jpg") ) {
+            if ( Storage::disk('public')->exists($post->image_path) ) {
                 Storage::disk("public")->delete($post->image_path);
             }
             $path = $request->file('image')->store('images', 'public');
@@ -111,7 +115,7 @@ class PostController extends Controller implements HasMiddleware
     {
 
         try {
-        if( Storage::disk('public')->exists("images/gcv8Q5yw30VOWkimbYm67y1uSzym3p30qtOdtiyJ.jpg") ){
+        if( Storage::disk('public')->exists($post->image_path) ){
             // unlink($post->image_path);
             Storage::disk("public")->delete($post->image_path);
          }

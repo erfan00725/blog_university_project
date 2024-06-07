@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PostReadInfo from "./PostReadInfo";
-import {
-  faEllipsisVertical,
-  faHeart,
-  faShare,
-} from "@fortawesome/free-solid-svg-icons";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { PostPrevProps } from "../../types/propsTypes";
 import classNames from "classnames";

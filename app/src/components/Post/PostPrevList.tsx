@@ -14,7 +14,11 @@ const displayPrevs = () => {
   }
 };
 
-const PostPrevList = ({ isBig = false }: PostPrevProps) => {
+const PostPrevList = ({
+  isBig = false,
+  page = 1,
+  perPage = 10,
+}: PostPrevProps) => {
   const [posts, setPosts] = useState<postType[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -24,13 +28,13 @@ const PostPrevList = ({ isBig = false }: PostPrevProps) => {
       setLoading(true);
       let api = new Api();
       api
-        .getPosts()
+        .getPosts(page, perPage)
         .then((res) => {
           if (res) {
             console.log(res.data);
             setPosts(res?.data.data);
-            setLoading(false);
           }
+          setLoading(false);
         })
         .catch((err) => {
           console.log("err " + err);
