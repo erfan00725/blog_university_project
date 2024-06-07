@@ -32,7 +32,7 @@ const PostCard = ({
       />
       <div className="flex flex-col items-start pb-12 border-b border-border-secondery-color">
         <p
-          className="whitespace-pre text-wrap text-lg w-full text-start text-main-color"
+          className="whitespace-pre-line text-wrap text-lg w-full text-start text-main-color"
           dangerouslySetInnerHTML={{ __html: body || "" }}
         />
       </div>
