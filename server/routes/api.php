@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\LikesController;
 use App\Http\Controllers\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -10,7 +13,12 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::apiResource('post', PostController::class);
-Route::put('post/{post}/like', [PostController::class, 'likeIncreament'])->name("post.like");
+Route::prefix('post/{post}')->group(function(){
+    Route::put('/like', [LikesController::class, 'like'])->name("post.like");
+    Route::get('/isLike', [LikesController::class, 'isLike'])->name("post.isLike");
+
+    Route::resource('comments', CommentController::class);
+});
 
 
 Route::post('/login', [AuthController::class, 'login']);

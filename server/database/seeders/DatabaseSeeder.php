@@ -52,7 +52,6 @@ class DatabaseSeeder extends Seeder
             video for extra engagement. Are you ready to get started? Simply
             create a new post now.",
                 "image_path" => 'images/c22c23_e3b5cb121db549fdbb1590f51d378b8c~mv2.png',
-                "likes" => 0
             ]);
         }
     }

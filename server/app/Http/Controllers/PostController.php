@@ -132,12 +132,4 @@ class PostController extends Controller implements HasMiddleware
             ], 500);
     }
     }
-
-    public function likeIncreament(Post $post)
-    {
-        $post->likes = $post->likes + 1;
-        $post->save();
-
-        return new PostResource($post);
-    }
 }
