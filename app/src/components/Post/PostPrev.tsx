@@ -6,7 +6,7 @@ import { PostPrevProps } from "../../types/propsTypes";
 import classNames from "classnames";
 import PostReadInfoShare from "./PostReadInfoShare";
 import { Link } from "react-router-dom";
-import { postType } from "../../types/fetchResponseTypes";
+import { PostType } from "../../types/fetchResponseTypes";
 import { BASE_STORAGE_URL } from "../../configs/urls";
 import { library } from "@fortawesome/fontawesome-svg-core";
 
@@ -20,7 +20,8 @@ const PostPrev = ({
   image_path: img,
   likes = 0,
   created_at,
-}: PostPrevProps & postType) => {
+  comments_count,
+}: PostPrevProps & PostType) => {
   const likeOnclickHandler = () => {};
 
   return (
@@ -65,7 +66,7 @@ const PostPrev = ({
         >
           <div className="flex flex-row items-center font-light text-sm">
             <span>0 views</span>
-            <span className="ml-3">0 comments</span>
+            <span className="ml-3">{comments_count ?? 0} comments</span>
           </div>
           <div
             className="flex flex-row items-center"

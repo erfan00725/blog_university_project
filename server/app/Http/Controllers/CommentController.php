@@ -19,7 +19,7 @@ class CommentController extends Controller
         $post = Post::with('comments')->findOrFail($post);
 
 
-        return new CommentCollection($post->comments);
+        return CommentsResource::collection($post->comments);
     }
 
     /**
@@ -73,6 +73,7 @@ class CommentController extends Controller
             return response()->json([
                 'message' => 'An error occurred while deleting the product',
                 'error' => $e->getMessage(),
-            ], 500);        }
+            ], 500);
+        }
     }
 }

@@ -10,6 +10,7 @@ import Post from "./pages/Post";
 import { Route, Routes, useLocation } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
+import { Bounce, ToastContainer } from "react-toastify";
 
 function App() {
   const location = useLocation();
@@ -36,6 +37,20 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+
+      <ToastContainer
+        position="top-left"
+        autoClose={2500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
 
       <Footer />
     </div>

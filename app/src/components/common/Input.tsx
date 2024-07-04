@@ -10,6 +10,9 @@ const Input = ({
   type,
   required = false,
   accept,
+  value,
+  name,
+  onChange,
 }: InputProps) => {
   return (
     <div
@@ -30,12 +33,14 @@ const Input = ({
 
       {type === "textarea" ? (
         <textarea
-          name="Text1"
+          name={name}
           className={"input h-20 resize-none !leading-5 " + inputClassName}
           placeholder={placeholder}
           cols={20}
           rows={4}
           maxLength={255}
+          value={value}
+          onChange={onChange}
         ></textarea>
       ) : (
         <input
@@ -43,6 +48,9 @@ const Input = ({
           placeholder={placeholder}
           type={type ?? "text"}
           accept={accept}
+          value={value}
+          onChange={onChange}
+          name={name}
         />
       )}
     </div>

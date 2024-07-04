@@ -4,15 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Api from "../../utilities/apis";
 import FormInput from "../common/FormInput";
 import { useNavigate } from "react-router-dom";
-
-const emailValidation = (email: string): boolean => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-};
-
-const passValidation = (pass: string): boolean => {
-  return pass.length > 6;
-};
+import FormValidation from "../../utilities/formValidate";
 
 const LoginForm = () => {
   const api = new Api();
@@ -24,55 +16,31 @@ const LoginForm = () => {
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [submitDisabled, setSubmitDisabled] = useState(true);
 
-  const isValidated = (rules?: string[]) => {
-    let validated = false;
-
-    validated = Object.values(errors).every((error) => error === "");
-
-    return validated;
-  };
-
-  const validation = (inputName: string, value: string) => {
-    let validated: boolean = true;
-
-    switch (inputName) {
-      case "password":
-        validated = passValidation(value);
-        break;
-      case "email":
-        validated = emailValidation(value);
-        break;
-
-      default:
-        validated = true;
-        break;
-    }
-
-    if (value.length <= 0) validated = false;
-
-    if (validated) {
-      setErrors((prev) => {
-        return { ...prev, [inputName]: "" };
-      });
-    } else {
-      setErrors((prev) => {
-        return { ...prev, [inputName]: "enter a valid " + inputName };
-      });
-    }
-  };
+  const formValidation = new FormValidation();
 
   const inputsChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-    validation(e.target.name, e.target.value);
+
+    let validate = formValidation.validation(e.target.name, e.target.value);
+
+    setErrors((prev) => ({
+      ...prev,
+      [e.target.name]: validate,
+    }));
+
     console.log(errors);
   };
 
   const submitHandler = (e: React.MouseEvent<HTMLElement>) => {
     for (let key in inputs) {
-      validation(key, inputs[key]);
+      let validate = formValidation.validation(key, inputs[key]);
+      setErrors((prev) => ({
+        ...prev,
+        [key]: validate,
+      }));
     }
 
-    if (isValidated()) {
+    if (formValidation.isValidated(errors)) {
       api
         .login(inputs["email"], inputs["password"])
         .then((res) => {
@@ -86,7 +54,7 @@ const LoginForm = () => {
   };
 
   useEffect(() => {
-    if (isValidated()) {
+    if (formValidation.isValidated(errors)) {
       setSubmitDisabled(false);
     } else {
       setSubmitDisabled(true);

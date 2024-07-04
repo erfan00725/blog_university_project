@@ -1,11 +1,20 @@
+import { CommentsType } from "./fetchResponseTypes";
+
 export type InputProps = {
   className?: string;
   inputClassName?: string;
   placeholder?: string;
   title?: string;
-  type?: string;
+  type?: "text" | "textarea";
   required?: boolean;
   accept?: string;
+  name?: string;
+  value?: string;
+  onChange?: (
+    event:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
+  ) => void;
 };
 
 export type PostPrevProps = {
@@ -42,4 +51,16 @@ export type PostReadInfoProps = {
 
 export type LoadingProps = {
   isLoading?: boolean;
+};
+
+export type CommentsProps = {
+  comments: CommentsType[];
+};
+
+export type CommentProps = {
+  comment: CommentsType;
+};
+
+export type CommentsInputType = {
+  setComments: React.Dispatch<React.SetStateAction<CommentsType[]>>;
 };

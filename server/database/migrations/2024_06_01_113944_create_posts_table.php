@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->text("description")->nullable();
             $table->longText("body");
+            $table->boolean('featured')->default(false);
             $table->string('image_path')->nullable();
             $table->foreignIdFor(User::class)->default(1);
             $table->timestamps();

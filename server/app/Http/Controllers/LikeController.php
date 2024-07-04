@@ -3,13 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\LikeResource;
-use App\Http\Resources\PostResource;
 use App\Models\Like;
-use App\Models\Likes;
-use App\Models\Post;
 use Illuminate\Http\Request;
 
-class LikesController extends Controller
+class LikeController extends Controller
 {
     public function like(Request $request, $post){
         $userIp = $request->ip();

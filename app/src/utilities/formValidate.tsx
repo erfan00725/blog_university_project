@@ -1,64 +1,43 @@
-import { LoginInputProps } from "../types/propsTypes";
+export default class FormValidation {
+  private emailValidation = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
-const emailValidation = (email: string): boolean => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-};
+  private passValidation = (pass: string): boolean => {
+    return pass.length > 6;
+  };
 
-const passValidation = (pass: string): boolean => {
-  return pass.length < 6;
-};
+  public isValidated = (errors: { [key: string]: string }) => {
+    let validated = false;
 
-export const formVAlidation = (
-  rules: string[],
-  setMassages: React.Dispatch<
-    React.SetStateAction<
-      { [key: string]: { [key: string]: string } } | undefined
-    >
-  >,
-  inputName: string,
-  value: string
-): boolean => {
-  let hasError: boolean = false;
+    validated = Object.values(errors).every((error) => error === "");
 
-  rules.forEach((rule) => {
-    switch (rule) {
-      case "required":
-        if (value.length <= 0) {
-          setMassages((prev) => {
-            return { ...prev, [inputName]: { [rule]: "fiels is required" } };
-          });
-          hasError = true;
-        }
-        break;
+    return validated;
+  };
 
-      case "email":
-        if (!emailValidation(value)) {
-          setMassages((prev) => {
-            return { ...prev, [inputName]: { [rule]: "email is not valid" } };
-          });
-          hasError = true;
-        }
-        break;
+  public validation = (inputName: string, value: string) => {
+    let validated: boolean = true;
 
+    switch (inputName) {
       case "password":
-        if (passValidation(value)) {
-          setMassages((prev) => {
-            return { ...prev, [inputName]: { [rule]: "password is to short" } };
-          });
-          hasError = true;
-        }
+        validated = this.passValidation(value);
+        break;
+      case "email":
+        validated = this.emailValidation(value);
         break;
 
       default:
+        validated = true;
+        break;
     }
-  });
 
-  if (!hasError) {
-    setMassages((prev) => {
-      return { ...prev, [inputName]: {} };
-    });
-  }
+    if (value.length <= 0) validated = false;
 
-  return hasError;
-};
+    if (validated) {
+      return "";
+    } else {
+      return "enter a valid " + inputName;
+    }
+  };
+}

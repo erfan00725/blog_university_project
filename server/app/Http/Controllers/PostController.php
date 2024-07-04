@@ -132,4 +132,15 @@ class PostController extends Controller implements HasMiddleware
             ], 500);
     }
     }
+
+    public function getFeatured(Request $request){
+        $post = Post::where('featured', true)->first();
+
+        if ($post) {
+            return new PostResource($post);
+        }else {
+            $post = Post::first();
+            return new PostResource($post);
+        }
+    }
 }

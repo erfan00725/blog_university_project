@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import PostPrev from "./PostPrev";
 import { PostPrevProps } from "../../types/propsTypes";
 import classNames from "classnames";
-import { postType } from "../../types/fetchResponseTypes";
-import postImg from "../../assets/images/c22c23_e3b5cb121db549fdbb1590f51d378b8c~mv2.png";
-import { Axios } from "axios";
+import { PostType } from "../../types/fetchResponseTypes";
+
 import Api from "../../utilities/apis";
 import Loading from "../common/Loading";
 
@@ -19,7 +18,7 @@ const PostPrevList = ({
   page = 1,
   perPage = 10,
 }: PostPrevProps) => {
-  const [posts, setPosts] = useState<postType[]>([]);
+  const [posts, setPosts] = useState<PostType[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -65,6 +64,8 @@ const PostPrevList = ({
             key={post.id}
             image_path={post.image_path}
             created_at={post.created_at}
+            comments={post.comments}
+            comments_count={post.comments_count}
           />
         ))
       )}

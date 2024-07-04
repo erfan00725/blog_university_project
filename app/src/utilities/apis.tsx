@@ -1,5 +1,7 @@
 import { AxiosInstance, AxiosResponse } from "axios";
 import axios from "./axios";
+import { ApiResponseType, PostType } from "../types/fetchResponseTypes";
+import { CreateCommentType } from "../types/apiParamsTypes";
 
 export default class Api {
   private axsiosInstance: AxiosInstance;
@@ -19,13 +21,21 @@ export default class Api {
     }
   };
 
+  createPost = (data: CreateCommentType, postId: number) => {
+    return axios.post(`post/${postId}/comments`, data);
+  };
+
   getPost = async (id: number) => {
     try {
-      let response = await axios.get("/post/" + id);
+      let response = await axios.get<ApiResponseType<PostType>>("/post/" + id);
       return response;
     } catch (err) {
       console.log(err);
     }
+  };
+
+  isLiked = (id: number) => {
+    return axios.get(`post/${id}/isLike`);
   };
 
   login = (email: string, pass: string) => {
@@ -39,5 +49,9 @@ export default class Api {
     return axios.get("/check", {
       headers: { Authorization: `Bearer ${token}` },
     });
+  };
+
+  getFeatured = () => {
+    return axios.get("/post/featured");
   };
 }

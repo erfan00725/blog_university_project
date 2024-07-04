@@ -4,7 +4,7 @@ import postImg from "../../assets/images/c22c23_e3b5cb121db549fdbb1590f51d378b8c
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
 import { faInstagram, faXTwitter } from "@fortawesome/free-brands-svg-icons";
-import { postType } from "../../types/fetchResponseTypes";
+import { PostType } from "../../types/fetchResponseTypes";
 import { BASE_STORAGE_URL } from "../../configs/urls";
 
 const PostCard = ({
@@ -15,7 +15,7 @@ const PostCard = ({
   image_path,
   created_at,
   likes = 0,
-}: postType) => {
+}: PostType) => {
   useEffect(() => {
     console.log(created_at);
   });
