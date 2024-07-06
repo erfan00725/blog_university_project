@@ -10,15 +10,13 @@ export default class Api {
     this.axsiosInstance = axios;
   }
 
-  getPosts = async (page: number = 1, perPage: number = 10) => {
-    try {
-      let response = await axios.get(
-        "/post?page=" + page + "&perPage=" + perPage
-      );
-      return response;
-    } catch (err) {
-      console.log(err);
-    }
+  getPosts = (
+    page: number = 1,
+    perPage: number = 10,
+    order: string = "ASC"
+  ) => {
+    console.log(`/post?page=${page}&perPage=${perPage}&order=${order}`);
+    return axios.get(`/post?page=${page}&perPage=${perPage}&order=${order}`);
   };
 
   createPost = (data: CreateCommentType, postId: number) => {
@@ -45,7 +43,17 @@ export default class Api {
     });
   };
 
-  check = (token: string) => {
+  logout = () => {
+    let token = localStorage.getItem("token");
+
+    return axios.post("/logout", null, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
+
+  loginCheck = (token: string) => {
     return axios.get("/check", {
       headers: { Authorization: `Bearer ${token}` },
     });

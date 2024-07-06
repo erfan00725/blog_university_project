@@ -29,10 +29,7 @@ const PostPrevList = ({
       api
         .getPosts(page, perPage)
         .then((res) => {
-          if (res) {
-            console.log(res.data);
-            setPosts(res?.data.data);
-          }
+          setPosts(res?.data.data);
           setLoading(false);
         })
         .catch((err) => {

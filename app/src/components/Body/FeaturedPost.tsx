@@ -47,7 +47,7 @@ const FeaturedPost = () => {
         </Link>
       </div>
       <div className="flex flex-col justify-center items-center px-8 py-7">
-        <PostReadInfo />
+        <PostReadInfo created_at={post?.created_at} />
         <div className="post-prev-text">
           <Link to={linkTo}>
             <h3 className="post-title">{post?.title}</h3>

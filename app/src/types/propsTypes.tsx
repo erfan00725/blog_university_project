@@ -1,4 +1,4 @@
-import { CommentsType } from "./fetchResponseTypes";
+import { CommentsType, PostType } from "./fetchResponseTypes";
 
 export type InputProps = {
   className?: string;
@@ -63,4 +63,8 @@ export type CommentProps = {
 
 export type CommentsInputType = {
   setComments: React.Dispatch<React.SetStateAction<CommentsType[]>>;
+};
+
+export type PostPrevSmallType = {
+  post: PostType;
 };

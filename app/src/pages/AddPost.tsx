@@ -7,15 +7,14 @@ import Loading from "../components/common/Loading";
 const AddPost = () => {
   const [isLoading, setIsLoading] = useState(true);
   const navigation = useNavigate();
+  const api = new Api();
 
   useEffect(() => {
     let token = localStorage.getItem("token");
-    const api = new Api();
-    let res;
 
     if (token) {
       api
-        .check(token)
+        .loginCheck(token)
         .then((response) => {
           setIsLoading(false);
         })

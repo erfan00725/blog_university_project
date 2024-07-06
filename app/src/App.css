@@ -2,7 +2,7 @@
   @apply flex flex-row justify-center items-center w-40 h-full font-extralight text-main-color border-main-color border-r first-of-type:border-l text-center;
 }
 
-.menu_items a {
+.menu_items a , .menu_items span{
   @apply block w-full leading-[50px];
 }
 

@@ -29,11 +29,7 @@ class PostController extends Controller implements HasMiddleware
      */
     public function index(Request $request)
     {
-        if ($request->has('perPage')) {
-            return PostResource::collection(Post::paginate($request->input("perPage")));
-        }else{
-            return PostResource::collection(Post::paginate(10));
-        }
+            return PostResource::collection(Post::orderBy('created_at', $request->input("order") ?? "ASC")->paginate($request->input("perPage") ?? 10));
     }
 
     /**

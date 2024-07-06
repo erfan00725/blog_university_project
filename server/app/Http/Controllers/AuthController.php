@@ -6,6 +6,7 @@ use App\Http\Resources\AuthResource;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -80,7 +81,19 @@ class AuthController extends Controller
 
     public function logout(Request $request): JsonResponse
     {
-        return response()->json($request->user()->currentAccessToken()->delete());
+        try {
+            $bearer_token = $request->bearerToken();
+            $token = PersonalAccessToken::findToken($bearer_token);
+            $token->delete();
+
+            return response()->json([
+                'data' => 'logged out successfully'
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => $e->getMessage()
+            ], 400);
+        }
     }
 
 }

@@ -5,6 +5,7 @@ import Api from "../../utilities/apis";
 import FormInput from "../common/FormInput";
 import { useNavigate } from "react-router-dom";
 import FormValidation from "../../utilities/formValidate";
+import { toast } from "react-toastify";
 
 const LoginForm = () => {
   const api = new Api();
@@ -27,8 +28,6 @@ const LoginForm = () => {
       ...prev,
       [e.target.name]: validate,
     }));
-
-    console.log(errors);
   };
 
   const submitHandler = (e: React.MouseEvent<HTMLElement>) => {
@@ -45,9 +44,11 @@ const LoginForm = () => {
         .login(inputs["email"], inputs["password"])
         .then((res) => {
           localStorage.setItem("token", res.data.data.token);
+          toast.success("Login successfully!");
           navigation("/");
         })
         .catch((error) => {
+          toast.error("somthinsg wrong : ");
           console.log(error);
         });
     }
@@ -72,6 +73,7 @@ const LoginForm = () => {
         value={inputs["email"]}
         isVAlid={errors["email"] ? errors["email"].length <= 0 : true}
         name="email"
+        type="email"
         error={errors["email"]}
       />
       <FormInput

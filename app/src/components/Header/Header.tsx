@@ -6,13 +6,37 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import { HeaderProps } from "../../types/propsTypes";
+import { useEffect, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import Api from "../../utilities/apis";
+import { toast } from "react-toastify";
 
 const Header = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
+  const [isLogin, setIsLogin] = useState(false);
+  const api = new Api();
+
+  useEffect(() => {
+    let token = localStorage.getItem("token");
+    if (token) {
+      api.loginCheck(token).then(() => {
+        setIsLogin(true);
+      });
+    }
+  }, []);
+
+  const logOutHandeler = () => {
+    api
+      .logout()
+      .then((res) => {
+        localStorage.removeItem("token");
+        console.log(res);
+        toast.success("logout successfully!");
+        setIsLogin(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className="flex flex-col justify-center items-center w-full text-main-color mb-16">
@@ -70,9 +94,17 @@ const Header = () => {
         </li>
         <li className="menu_items border-l-0 cursor-pointer">
           <a href="#contactForm" className="w-full h-full">
-            Contant
+            Contact
           </a>
         </li>
+        {isLogin && (
+          <li
+            onClick={logOutHandeler}
+            className="menu_items border-l-0 cursor-pointer"
+          >
+            <span className="w-full h-full">Logout</span>
+          </li>
+        )}
         <li className="menu_items pl-2 pr-2 relative">
           <input
             type="search"
