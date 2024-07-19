@@ -6,20 +6,22 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Api from "../../utilities/apis";
 import { toast } from "react-toastify";
+import { AuthContext } from "../../context/authContext";
 
 const Header = () => {
-  const [isLogin, setIsLogin] = useState(false);
   const api = new Api();
+  const [auth, setAuth] = useContext(AuthContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     let token = localStorage.getItem("token");
     if (token) {
       api.loginCheck(token).then(() => {
-        setIsLogin(true);
+        setAuth(true);
       });
     }
   }, []);
@@ -31,7 +33,8 @@ const Header = () => {
         localStorage.removeItem("token");
         console.log(res);
         toast.success("logout successfully!");
-        setIsLogin(false);
+        setAuth(false);
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);
@@ -97,13 +100,29 @@ const Header = () => {
             Contact
           </a>
         </li>
-        {isLogin && (
-          <li
-            onClick={logOutHandeler}
-            className="menu_items border-l-0 cursor-pointer"
-          >
-            <span className="w-full h-full">Logout</span>
-          </li>
+        {auth && (
+          <>
+            <li className="menu_items">
+              <NavLink
+                className={({ isActive, isPending }) =>
+                  isPending
+                    ? "text-main-color"
+                    : isActive
+                      ? "text-secondery-color"
+                      : ""
+                }
+                to={"/posts/add"}
+              >
+                Create Post
+              </NavLink>
+            </li>
+            <li
+              onClick={logOutHandeler}
+              className="menu_items border-l-0 cursor-pointer"
+            >
+              <span className="w-full h-full">Logout</span>
+            </li>
+          </>
         )}
         <li className="menu_items pl-2 pr-2 relative">
           <input

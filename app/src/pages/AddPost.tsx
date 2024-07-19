@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import PostForm from "../components/Post/AddPost/PostForm";
 import Api from "../utilities/apis";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +15,7 @@ const AddPost = () => {
     if (token) {
       api
         .loginCheck(token)
-        .then((response) => {
+        .then(() => {
           setIsLoading(false);
         })
         .catch((err) => {

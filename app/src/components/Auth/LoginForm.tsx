@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Api from "../../utilities/apis";
@@ -6,16 +6,22 @@ import FormInput from "../common/FormInput";
 import { useNavigate } from "react-router-dom";
 import FormValidation from "../../utilities/formValidate";
 import { toast } from "react-toastify";
+import { AuthContext } from "../../context/authContext";
+
+const inputsConfig = { email: "", password: "" };
 
 const LoginForm = () => {
   const api = new Api();
 
   const navigation = useNavigate();
 
-  const [inputs, setInputs] = useState<{ [key: string]: string }>({});
+  const [inputs, setInputs] = useState<{ [key: string]: string }>(inputsConfig);
+  // const [postImage, setPostImage] = useState<File>();
 
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [submitDisabled, setSubmitDisabled] = useState(true);
+
+  const setAuth = useContext(AuthContext)[1];
 
   const formValidation = new FormValidation();
 
@@ -31,6 +37,7 @@ const LoginForm = () => {
   };
 
   const submitHandler = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault;
     for (let key in inputs) {
       let validate = formValidation.validation(key, inputs[key]);
       setErrors((prev) => ({
@@ -44,6 +51,7 @@ const LoginForm = () => {
         .login(inputs["email"], inputs["password"])
         .then((res) => {
           localStorage.setItem("token", res.data.data.token);
+          setAuth(true);
           toast.success("Login successfully!");
           navigation("/");
         })
@@ -53,6 +61,8 @@ const LoginForm = () => {
         });
     }
   };
+
+  useEffect(() => {}, []);
 
   useEffect(() => {
     if (formValidation.isValidated(errors)) {
@@ -67,25 +77,18 @@ const LoginForm = () => {
       <h2 className="font-semibold text-3xl text-secondery-color mb-10">
         Admin Login
       </h2>
-      <FormInput
-        placeholder="email"
-        onchage={inputsChangeHandler}
-        value={inputs["email"]}
-        isVAlid={errors["email"] ? errors["email"].length <= 0 : true}
-        name="email"
-        type="email"
-        error={errors["email"]}
-      />
-      <FormInput
-        icon={<FontAwesomeIcon icon={faLock} />}
-        placeholder="Password"
-        type="password"
-        onchage={inputsChangeHandler}
-        value={inputs["password"]}
-        isVAlid={errors["password"] ? errors["password"].length <= 0 : true}
-        name="password"
-        error={errors["password"]}
-      />
+      {Object.keys(inputsConfig).map((input) => (
+        <FormInput
+          icon={<FontAwesomeIcon icon={faLock} />}
+          placeholder={input}
+          type={input}
+          onChange={inputsChangeHandler}
+          value={inputs[input]}
+          isVAlid={errors[input] ? errors[input].length <= 0 : true}
+          name={input}
+          error={errors[input]}
+        />
+      ))}
       <button
         disabled={submitDisabled}
         type="submit"

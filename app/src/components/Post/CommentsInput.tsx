@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import Input from "../common/Input";
 import FormValidation from "../../utilities/formValidate";
-import { Bounce, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
 import Api from "../../utilities/apis";
 import { CommentsInputType } from "../../types/propsTypes";
@@ -53,7 +53,7 @@ const CommentsInput = ({ setComments }: CommentsInputType) => {
     if (!Object.values(errors)[0]) {
       console.log(param);
       api
-        .createPost(
+        .addComment(
           {
             user_name: inputsValue.name,
             content: inputsValue.content,
