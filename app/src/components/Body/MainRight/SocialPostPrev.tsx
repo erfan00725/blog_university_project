@@ -1,4 +1,3 @@
-import React from "react";
 import img from "../../../assets/images/01.jpg";
 
 const SocialPostPrev = () => {

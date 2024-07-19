@@ -4,4 +4,4 @@ export const AuthContext = createContext<
   [boolean, React.Dispatch<React.SetStateAction<boolean>>]
 >([false, () => {}]);
 
-const useAuthContext = () => {};
+// const useAuthContext = () => {};

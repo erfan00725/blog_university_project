@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Home from "./pages/Home";
 import Header from "./components/Header/Header";
@@ -16,7 +16,6 @@ import { AuthContext } from "./context/authContext";
 function App() {
   const location = useLocation();
   const auth = useState<boolean>(false);
-  const authContext = useContext(AuthContext);
 
   useEffect(() => {
     window.scrollTo({
@@ -61,19 +60,5 @@ function App() {
     </AuthContext.Provider>
   );
 }
-
-{
-  /* <Home /> */
-}
-{
-  /* <About /> */
-}
-{
-  /* <PostsList /> */
-}
-{
-  /* <AddPost /> */
-}
-// <Post />
 
 export default App;

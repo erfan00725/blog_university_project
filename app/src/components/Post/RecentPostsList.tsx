@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import PostPrevSmall from "./PostPrevSmall";
 import Api from "../../utilities/apis";
 import { PostType } from "../../types/fetchResponseTypes";

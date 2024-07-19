@@ -1,4 +1,3 @@
-import React from "react";
 import { PostReadInfoProps } from "../../types/propsTypes";
 
 const PostReadInfo = ({ created_at }: PostReadInfoProps) => {

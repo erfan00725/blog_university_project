@@ -1,4 +1,3 @@
-import React from "react";
 import PostPrevList from "../components/Post/PostPrevList";
 
 const PostsList = () => {

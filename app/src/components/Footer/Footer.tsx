@@ -1,7 +1,5 @@
-import React from "react";
 import longArrow from "../../assets/images/noun-arrow-long-top-4411420.svg";
 import Input from "../common/Input";
-import { FooterProps } from "../../types/propsTypes";
 
 const Footer = () => {
   const scrollToTopHandler = () => {

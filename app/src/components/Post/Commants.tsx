@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import CommentsInput from "./CommentsInput";
 import Comment from "./Comment";
 import { CommentsProps } from "../../types/propsTypes";

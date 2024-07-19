@@ -1,4 +1,3 @@
-import React from "react";
 import userIMG from "../../../assets/images/User.webp";
 import SocialPostPrev from "./SocialPostPrev";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

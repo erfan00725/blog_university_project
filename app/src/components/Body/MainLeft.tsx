@@ -1,5 +1,3 @@
-import React from "react";
-import PostPrev from "../Post/PostPrev";
 import PostPrevList from "../Post/PostPrevList";
 import { Link } from "react-router-dom";
 

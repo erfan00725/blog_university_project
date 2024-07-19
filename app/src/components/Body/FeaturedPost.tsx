@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import featuredIMG from "../../assets/images/FEATURED-POST.webp";
+import { useEffect, useState } from "react";
 import PostReadInfo from "../Post/PostReadInfo";
 import { Link } from "react-router-dom";
 import { PostType } from "../../types/fetchResponseTypes";

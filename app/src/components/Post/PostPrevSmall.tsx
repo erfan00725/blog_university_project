@@ -1,5 +1,3 @@
-import React from "react";
-import image from "../../assets/images/c22c23_e3b5cb121db549fdbb1590f51d378b8c~mv2.png";
 import { Link } from "react-router-dom";
 import { PostPrevSmallType } from "../../types/propsTypes";
 import { BASE_STORAGE_URL } from "../../configs/urls";

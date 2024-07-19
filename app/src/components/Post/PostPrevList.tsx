@@ -7,12 +7,6 @@ import { PostType } from "../../types/fetchResponseTypes";
 import Api from "../../utilities/apis";
 import Loading from "../common/Loading";
 
-const displayPrevs = () => {
-  for (let index = 0; index < 6; index++) {
-    return;
-  }
-};
-
 const PostPrevList = ({
   isBig = false,
   page = 1,
